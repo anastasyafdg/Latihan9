@@ -7,7 +7,7 @@ const {
     deleteProduct
 } = require("../controllers/product.controller.js");
 
-const { authBearer } = require("../middlewares/auth.middleware.js");
+const authBearer = require("../middlewares/auth.middleware.js"); // FIXED
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ const router = express.Router();
 router.get("/", getAllProduct);
 router.get("/:id", getProductById);
 
-// Endpoint dengan proteksi
+// Endpoint terproteksi JWT
 router.post("/", authBearer, createProduct);
 router.put("/:id", authBearer, updateProduct);
 router.delete("/:id", authBearer, deleteProduct);

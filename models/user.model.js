@@ -20,7 +20,12 @@ const User = {
 
     delete: (id, callback) => {
         db.query('DELETE FROM users WHERE id = ?', [id], callback);
-    }
+    },
+
+    // Get user by Email (untuk login)
+    findByEmail: (email, callback) => {
+        db.query('SELECT * FROM users WHERE email = ?', [email], callback);
+    },
 };
 
 module.exports = User;
